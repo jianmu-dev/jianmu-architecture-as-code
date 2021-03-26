@@ -1,6 +1,6 @@
 @startuml(id=worker-component)
 title 建木自动化集成平台 - docker-worker - Components
-caption 建木组件图
+caption 执行器组件图
 
 skinparam {
   shadowing false
@@ -10,7 +10,7 @@ skinparam {
   maxMessageSize 100
 }
 hide stereotype
-top to bottom direction
+left to right direction
 skinparam rectangle<<11>> {
   BackgroundColor #85bbf0
   FontColor #000000
@@ -41,6 +41,8 @@ package "docker-worker\n[Container]" {
   rectangle "==daemon\n<size:10>[Component]</size>\n\nworker守护容器" <<10>> as 10
   rectangle "==代码编译\n<size:10>[Component]</size>\n\n任务运行容器" <<11>> as 11
 }
+10 .[#707070].> 12 : "启动容器"
 10 .[#707070].> 3 : "返回执行结果"
+10 .[#707070].> 11 : "启动容器"
 3 .[#707070].> 10 : "下发任务执行"
 @enduml

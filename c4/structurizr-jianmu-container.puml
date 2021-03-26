@@ -52,5 +52,5 @@ package "建木自动化集成平台\n[Software System]" {
 3 .[#707070].> 9 : "下发任务执行"
 3 .[#707070].> 13 : "下发任务执行"
 3 .[#707070].> 8 : "Reads from and writes to\n<size:8>[JDBC/SSL]</size>"
-1 .[#707070].> 3 : "调用API"
+1 .[#707070].> 3 : "启动流程或任务"
 @enduml
