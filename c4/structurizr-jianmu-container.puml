@@ -16,19 +16,19 @@ skinparam rectangle<<1>> {
   FontColor #ffffff
   BorderColor #052E56
 }
-skinparam rectangle<<13>> {
-  BackgroundColor #438dd5
-  FontColor #ffffff
-  BorderColor #2E6295
-  roundCorner 20
-}
 skinparam rectangle<<3>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
   roundCorner 20
 }
-skinparam rectangle<<8>> {
+skinparam rectangle<<14>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam rectangle<<4>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
@@ -40,17 +40,25 @@ skinparam rectangle<<9>> {
   BorderColor #2E6295
   roundCorner 20
 }
+skinparam rectangle<<10>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
 rectangle "==用户\n<size:10>[Person]</size>\n\n泛指用户" <<1>> as 1
 package "建木自动化集成平台\n[Software System]" {
-  rectangle "==docker-worker\n<size:10>[Container]</size>\n\n容器化执行环境" <<9>> as 9
-  rectangle "==shell-worker\n<size:10>[Container]</size>\n\n非容器化执行环境" <<13>> as 13
-  rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<3>> as 3
-  rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<8>> as 8
+  rectangle "==Single-Page Application\n<size:10>[Container: JavaScript and Angular]</size>\n\nProvides all of the Internet banking functionality to customers via their web browser." <<3>> as 3
+  rectangle "==docker-worker\n<size:10>[Container]</size>\n\n容器化执行环境" <<10>> as 10
+  rectangle "==shell-worker\n<size:10>[Container]</size>\n\n非容器化执行环境" <<14>> as 14
+  rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<4>> as 4
+  rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<9>> as 9
 }
-9 .[#707070].> 3 : "返回执行结果"
-13 .[#707070].> 3 : "返回执行结果"
-3 .[#707070].> 9 : "下发任务执行"
-3 .[#707070].> 13 : "下发任务执行"
-3 .[#707070].> 8 : "Reads from and writes to\n<size:8>[JDBC/SSL]</size>"
-1 .[#707070].> 3 : "启动流程或任务"
+3 .[#707070].> 4 : "启动流程或任务"
+10 .[#707070].> 4 : "返回执行结果"
+14 .[#707070].> 4 : "返回执行结果"
+4 .[#707070].> 10 : "下发任务执行"
+4 .[#707070].> 14 : "下发任务执行"
+4 .[#707070].> 9 : "Reads from and writes to\n<size:8>[JDBC/SSL]</size>"
+1 .[#707070].> 3 : "操作或查看流程与任务"
 @enduml

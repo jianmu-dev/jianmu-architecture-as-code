@@ -1,0 +1,101 @@
+@startuml(id=DevelopmentDeployment)
+title 建木自动化集成平台 - Deployment - dev
+
+skinparam {
+  shadowing false
+  arrowFontSize 10
+  defaultTextAlignment center
+  wrapWidth 200
+  maxMessageSize 100
+}
+hide stereotype
+top to bottom direction
+skinparam node<<44>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+skinparam rectangle<<45>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam node<<47>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+skinparam node<<48>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+skinparam rectangle<<49>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam node<<51>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+skinparam node<<41>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+skinparam node<<52>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+skinparam rectangle<<42>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam rectangle<<53>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam node<<43>> {
+  BackgroundColor #ffffff
+  FontColor #000000
+  BorderColor #000000
+  roundCorner 20
+}
+node "Docker Container - Database Server\n[Deployment Node: Docker]" <<47>> as 47 {
+  node "Database Server\n[Deployment Node: Oracle 12c]" <<48>> as 48 {
+    rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<49>> as 49
+  }
+}
+node "Docker Container - Web Server\n[Deployment Node: Docker]" <<43>> as 43 {
+  node "Apache Tomcat\n[Deployment Node: Apache Tomcat 8.x]" <<44>> as 44 {
+    rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<45>> as 45
+  }
+}
+node "Docker Container - Worker Server\n[Deployment Node: Docker]" <<51>> as 51 {
+  node "Worker Server\n[Deployment Node: Golang]" <<52>> as 52 {
+    rectangle "==docker-worker\n<size:10>[Container]</size>\n\n容器化执行环境" <<53>> as 53
+  }
+}
+node "Web Browser\n[Deployment Node: Chrome, Firefox, Safari, or Edge]" <<41>> as 41 {
+  rectangle "==Single-Page Application\n<size:10>[Container: JavaScript and Angular]</size>\n\nProvides all of the Internet banking functionality to customers via their web browser." <<42>> as 42
+}
+42 .[#707070].> 45 : "启动流程或任务"
+53 .[#707070].> 45 : "返回执行结果"
+45 .[#707070].> 53 : "下发任务执行"
+45 .[#707070].> 49 : "Reads from and writes to\n<size:8>[JDBC/SSL]</size>"
+@enduml
