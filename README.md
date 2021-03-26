@@ -5,7 +5,7 @@
 
 #### 使用说明
 
-本项目使用Structurizr DSL(https://github.com/structurizr/dsl)的Cli工具来生成C4 Model的架构图
+本项目使用[Structurizr DSL](https://github.com/structurizr/dsl) 的Cli工具来生成C4 Model的架构图
 
 该工具可以输出为PlantUML格式文件
 
