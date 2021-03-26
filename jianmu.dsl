@@ -49,12 +49,12 @@ workspace "Jianmu" "建木自动化集成平台" {
                 developerSinglePageApplicationInstance = containerInstance singlePageApplication
             }
             deploymentNode "Docker Container - Web Server" "" "Docker" {
-                deploymentNode "Apache Tomcat" "" "Apache Tomcat 8.x" {
+                deploymentNode "Spring boot" "" "Spring boot 2.4.4" {
                 developerWebApplicationInstance = containerInstance web
                 }
             }
             deploymentNode "Docker Container - Database Server" "" "Docker" {
-                deploymentNode "Database Server" "" "Oracle 12c" {
+                deploymentNode "Database Server" "" "Mysql 8.0" {
                 developerDatabaseInstance = containerInstance database
                 }
             }

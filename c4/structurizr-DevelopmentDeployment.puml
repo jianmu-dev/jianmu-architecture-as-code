@@ -77,12 +77,12 @@ skinparam node<<43>> {
   roundCorner 20
 }
 node "Docker Container - Database Server\n[Deployment Node: Docker]" <<47>> as 47 {
-  node "Database Server\n[Deployment Node: Oracle 12c]" <<48>> as 48 {
+  node "Database Server\n[Deployment Node: Mysql 8.0]" <<48>> as 48 {
     rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<49>> as 49
   }
 }
 node "Docker Container - Web Server\n[Deployment Node: Docker]" <<43>> as 43 {
-  node "Apache Tomcat\n[Deployment Node: Apache Tomcat 8.x]" <<44>> as 44 {
+  node "Spring boot\n[Deployment Node: Spring boot 2.4.4]" <<44>> as 44 {
     rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<45>> as 45
   }
 }
