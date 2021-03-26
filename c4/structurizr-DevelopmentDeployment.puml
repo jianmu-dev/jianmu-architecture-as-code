@@ -92,7 +92,7 @@ node "Docker Container - Worker Server\n[Deployment Node: Docker]" <<51>> as 51 
   }
 }
 node "Web Browser\n[Deployment Node: Chrome, Firefox, Safari, or Edge]" <<41>> as 41 {
-  rectangle "==Single-Page Application\n<size:10>[Container: JavaScript and Vue 3.0]</size>\n\nProvides all of the Jianmu functionality to customers via their web browser." <<42>> as 42
+  rectangle "==SPA单页面应用\n<size:10>[Container: TypeScript and Vue 3.0]</size>\n\nProvides all of the Jianmu functionality to customers via their web browser." <<42>> as 42
 }
 42 .[#707070].> 45 : "启动流程或任务"
 53 .[#707070].> 45 : "返回执行结果"
