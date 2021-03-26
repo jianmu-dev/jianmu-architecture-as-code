@@ -2,7 +2,7 @@ workspace "Jianmu" "建木自动化集成平台" {
     model {
         user = person "用户" "泛指用户"
         jianmu = softwareSystem "建木自动化集成平台" "建木自动化集成平台" {
-            singlePageApplication = container "Single-Page Application" "Provides all of the Internet banking functionality to customers via their web browser." "JavaScript and Angular" "Web Browser"
+            singlePageApplication = container "Single-Page Application" "Provides all of the Jianmu functionality to customers via their web browser." "JavaScript and Vue 3.0" "Web Browser"
             web = container "主服务" "主服务" {
                 trigger = component "触发器" "触发器上下文"
                 workflow = component "流程流转" "流程上下文"

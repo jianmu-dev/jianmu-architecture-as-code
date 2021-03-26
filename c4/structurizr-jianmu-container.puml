@@ -16,13 +16,13 @@ skinparam rectangle<<1>> {
   FontColor #ffffff
   BorderColor #052E56
 }
-skinparam rectangle<<3>> {
+skinparam rectangle<<14>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
   roundCorner 20
 }
-skinparam rectangle<<14>> {
+skinparam rectangle<<3>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
@@ -48,7 +48,7 @@ skinparam rectangle<<10>> {
 }
 rectangle "==用户\n<size:10>[Person]</size>\n\n泛指用户" <<1>> as 1
 package "建木自动化集成平台\n[Software System]" {
-  rectangle "==Single-Page Application\n<size:10>[Container: JavaScript and Angular]</size>\n\nProvides all of the Internet banking functionality to customers via their web browser." <<3>> as 3
+  rectangle "==Single-Page Application\n<size:10>[Container: JavaScript and Vue 3.0]</size>\n\nProvides all of the Jianmu functionality to customers via their web browser." <<3>> as 3
   rectangle "==docker-worker\n<size:10>[Container]</size>\n\n容器化执行环境" <<10>> as 10
   rectangle "==shell-worker\n<size:10>[Container]</size>\n\n非容器化执行环境" <<14>> as 14
   rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<4>> as 4
