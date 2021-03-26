@@ -1,0 +1,50 @@
+@startuml(id=web-component)
+title 建木自动化集成平台 - 主服务 - Components
+caption 主服务组件图
+
+skinparam {
+  shadowing false
+  arrowFontSize 10
+  defaultTextAlignment center
+  wrapWidth 200
+  maxMessageSize 100
+}
+hide stereotype
+top to bottom direction
+skinparam rectangle<<4>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+skinparam rectangle<<5>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+skinparam rectangle<<6>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+skinparam rectangle<<7>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+package "主服务\n[Container]" {
+  rectangle "==任务分发\n<size:10>[Component]</size>\n\n任务上下文" <<6>> as 6
+  rectangle "==参数管理\n<size:10>[Component]</size>\n\n参数上下文" <<7>> as 7
+  rectangle "==流程流转\n<size:10>[Component]</size>\n\n流程上下文" <<5>> as 5
+  rectangle "==触发器\n<size:10>[Component]</size>\n\n触发器上下文" <<4>> as 4
+}
+6 .[#707070].> 7 : "读取参数信息"
+5 .[#707070].> 6 : "任务节点激活事件触发任务启动"
+5 .[#707070].> 6 : "任务节点中止事件触发任务中止"
+5 .[#707070].> 7 : "读取参数信息"
+4 .[#707070].> 6 : "可以直接触发任务启动"
+4 .[#707070].> 5 : "触发流程启动"
+@enduml

@@ -1,0 +1,46 @@
+@startuml(id=worker-component)
+title 建木自动化集成平台 - docker-worker - Components
+caption 建木组件图
+
+skinparam {
+  shadowing false
+  arrowFontSize 10
+  defaultTextAlignment center
+  wrapWidth 200
+  maxMessageSize 100
+}
+hide stereotype
+top to bottom direction
+skinparam rectangle<<11>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+skinparam rectangle<<12>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+skinparam rectangle<<3>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam rectangle<<10>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<3>> as 3
+package "docker-worker\n[Container]" {
+  rectangle "==Ansible执行\n<size:10>[Component]</size>\n\n任务运行容器" <<12>> as 12
+  rectangle "==daemon\n<size:10>[Component]</size>\n\nworker守护容器" <<10>> as 10
+  rectangle "==代码编译\n<size:10>[Component]</size>\n\n任务运行容器" <<11>> as 11
+}
+10 .[#707070].> 3 : "返回执行结果"
+3 .[#707070].> 10 : "下发任务执行"
+@enduml
