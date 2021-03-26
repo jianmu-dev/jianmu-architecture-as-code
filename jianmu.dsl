@@ -20,19 +20,25 @@ workspace "Jianmu" "建木自动化集成平台" {
             }
         }
 
-        user -> web "调用API"
+        user -> web "启动流程或任务"
         web -> database "Reads from and writes to" "JDBC/SSL"
         web -> daemon "下发任务执行"
         web -> daemon_process "下发任务执行"
         daemon -> web "返回执行结果"
         daemon_process -> web "返回执行结果"
 
+        daemon -> runner1 "启动容器"
+        daemon -> runner2 "启动容器"
+        
         trigger -> workflow "触发流程启动"
-        trigger -> task "可以直接触发任务启动"
+        trigger -> task "直接触发任务启动"
         workflow -> task "任务节点激活事件触发任务启动"
         workflow -> task "任务节点中止事件触发任务中止"
+        task -> workflow "返回任务执行状态"
         workflow -> parameter "读取参数信息"
+        workflow -> parameter "流程执行结果参数写入"
         task -> parameter "读取参数信息"
+        task -> parameter "任务执行结果参数写入"
     }
 
     views {
@@ -42,11 +48,11 @@ workspace "Jianmu" "建木自动化集成平台" {
         }
         component web "web-component" "主服务组件图" {
             include *
-            autoLayout
+            autoLayout lr 400
         }
-        component worker1 "worker-component" "建木组件图" {
+        component worker1 "worker-component" "执行器组件图" {
             include *
-            autoLayout
+            autoLayout lr
         }
     }
 }
