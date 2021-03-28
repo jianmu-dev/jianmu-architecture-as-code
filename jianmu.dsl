@@ -4,8 +4,10 @@ workspace "Jianmu" "建木自动化集成平台" {
         jianmu = softwareSystem "建木自动化集成平台" "建木自动化集成平台" {
             singlePageApplication = container "SPA单页面应用" "Provides all of the Jianmu functionality to customers via their web browser." "TypeScript and Vue 3.0" "Web Browser"
             web = container "主服务" "主服务" {
+                dsl = component "DSL解析器" "DSL语法解析器"
                 trigger = component "触发器" "触发器上下文"
                 workflow = component "流程流转" "流程上下文"
+                el = component "el引擎" "表达式引擎"
                 task = component "任务分发" "任务上下文"
                 parameter = component "参数管理" "参数上下文"
             }
@@ -22,7 +24,7 @@ workspace "Jianmu" "建木自动化集成平台" {
         }
         # 容器之间关联关系
         user -> singlePageApplication "操作或查看流程与任务"
-        web -> database "Reads from and writes to" "JDBC/SSL"
+        web -> database "读写数据" "JDBC/SSL"
         web -> daemon "下发任务执行"
         web -> daemon_process "下发任务执行"
         daemon -> web "返回执行结果"
@@ -34,10 +36,14 @@ workspace "Jianmu" "建木自动化集成平台" {
 
         # 主服务内部组件关系
         singlePageApplication -> trigger "启动流程或任务"
+        singlePageApplication -> dsl "提交DSL定义"
+        dsl -> workflow "保存流程定义"
         trigger -> workflow "触发流程启动"
         trigger -> task "直接触发任务启动"
         workflow -> task "任务节点激活事件触发任务启动"
         workflow -> task "任务节点中止事件触发任务中止"
+        workflow -> el "执行表达式"
+        el -> workflow "返回表达式结果"
         task -> workflow "返回任务执行状态"
         workflow -> parameter "读取参数信息"
         workflow -> parameter "流程执行结果参数写入"

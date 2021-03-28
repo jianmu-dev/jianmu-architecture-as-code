@@ -11,6 +11,18 @@ skinparam {
 }
 hide stereotype
 top to bottom direction
+skinparam rectangle<<11>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
+skinparam rectangle<<12>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2E6295
+  roundCorner 20
+}
 skinparam rectangle<<1>> {
   BackgroundColor #08427b
   FontColor #ffffff
@@ -22,25 +34,13 @@ skinparam rectangle<<3>> {
   BorderColor #2E6295
   roundCorner 20
 }
-skinparam rectangle<<14>> {
-  BackgroundColor #438dd5
-  FontColor #ffffff
-  BorderColor #2E6295
-  roundCorner 20
-}
 skinparam rectangle<<4>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
   roundCorner 20
 }
-skinparam rectangle<<9>> {
-  BackgroundColor #438dd5
-  FontColor #ffffff
-  BorderColor #2E6295
-  roundCorner 20
-}
-skinparam rectangle<<10>> {
+skinparam rectangle<<16>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
@@ -49,16 +49,16 @@ skinparam rectangle<<10>> {
 rectangle "==用户\n<size:10>[Person]</size>\n\n泛指用户" <<1>> as 1
 package "建木自动化集成平台\n[Software System]" {
   rectangle "==SPA单页面应用\n<size:10>[Container: TypeScript and Vue 3.0]</size>\n\nProvides all of the Jianmu functionality to customers via their web browser." <<3>> as 3
-  rectangle "==docker-worker\n<size:10>[Container]</size>\n\n容器化执行环境" <<10>> as 10
-  rectangle "==shell-worker\n<size:10>[Container]</size>\n\n非容器化执行环境" <<14>> as 14
+  rectangle "==docker-worker\n<size:10>[Container]</size>\n\n容器化执行环境" <<12>> as 12
+  rectangle "==shell-worker\n<size:10>[Container]</size>\n\n非容器化执行环境" <<16>> as 16
   rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<4>> as 4
-  rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<9>> as 9
+  rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<11>> as 11
 }
 3 .[#707070].> 4 : "启动流程或任务"
-10 .[#707070].> 4 : "返回执行结果"
-14 .[#707070].> 4 : "返回执行结果"
-4 .[#707070].> 10 : "下发任务执行"
-4 .[#707070].> 14 : "下发任务执行"
-4 .[#707070].> 9 : "Reads from and writes to\n<size:8>[JDBC/SSL]</size>"
+12 .[#707070].> 4 : "返回执行结果"
+16 .[#707070].> 4 : "返回执行结果"
+4 .[#707070].> 12 : "下发任务执行"
+4 .[#707070].> 16 : "下发任务执行"
+4 .[#707070].> 11 : "读写数据\n<size:8>[JDBC/SSL]</size>"
 1 .[#707070].> 3 : "操作或查看流程与任务"
 @enduml

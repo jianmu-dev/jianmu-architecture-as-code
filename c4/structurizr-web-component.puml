@@ -41,21 +41,39 @@ skinparam rectangle<<8>> {
   BorderColor #5D82A8
   roundCorner 20
 }
+skinparam rectangle<<9>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
+skinparam rectangle<<10>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5D82A8
+  roundCorner 20
+}
 rectangle "==SPA单页面应用\n<size:10>[Container: TypeScript and Vue 3.0]</size>\n\nProvides all of the Jianmu functionality to customers via their web browser." <<3>> as 3
 package "主服务\n[Container]" {
-  rectangle "==任务分发\n<size:10>[Component]</size>\n\n任务上下文" <<7>> as 7
-  rectangle "==参数管理\n<size:10>[Component]</size>\n\n参数上下文" <<8>> as 8
-  rectangle "==流程流转\n<size:10>[Component]</size>\n\n流程上下文" <<6>> as 6
-  rectangle "==触发器\n<size:10>[Component]</size>\n\n触发器上下文" <<5>> as 5
+  rectangle "==DSL解析器\n<size:10>[Component]</size>\n\nDSL语法解析器" <<5>> as 5
+  rectangle "==el引擎\n<size:10>[Component]</size>\n\n表达式引擎" <<8>> as 8
+  rectangle "==任务分发\n<size:10>[Component]</size>\n\n任务上下文" <<9>> as 9
+  rectangle "==参数管理\n<size:10>[Component]</size>\n\n参数上下文" <<10>> as 10
+  rectangle "==流程流转\n<size:10>[Component]</size>\n\n流程上下文" <<7>> as 7
+  rectangle "==触发器\n<size:10>[Component]</size>\n\n触发器上下文" <<6>> as 6
 }
-3 .[#707070].> 5 : "启动流程或任务"
-7 .[#707070].> 8 : "任务执行结果参数写入"
-7 .[#707070].> 8 : "读取参数信息"
-7 .[#707070].> 6 : "返回任务执行状态"
-6 .[#707070].> 7 : "任务节点中止事件触发任务中止"
-6 .[#707070].> 7 : "任务节点激活事件触发任务启动"
-6 .[#707070].> 8 : "读取参数信息"
-6 .[#707070].> 8 : "流程执行结果参数写入"
-5 .[#707070].> 7 : "直接触发任务启动"
-5 .[#707070].> 6 : "触发流程启动"
+5 .[#707070].> 7 : "保存流程定义"
+3 .[#707070].> 5 : "提交DSL定义"
+3 .[#707070].> 6 : "启动流程或任务"
+8 .[#707070].> 7 : "返回表达式结果"
+9 .[#707070].> 10 : "读取参数信息"
+9 .[#707070].> 10 : "任务执行结果参数写入"
+9 .[#707070].> 7 : "返回任务执行状态"
+7 .[#707070].> 8 : "执行表达式"
+7 .[#707070].> 9 : "任务节点激活事件触发任务启动"
+7 .[#707070].> 9 : "任务节点中止事件触发任务中止"
+7 .[#707070].> 10 : "读取参数信息"
+7 .[#707070].> 10 : "流程执行结果参数写入"
+6 .[#707070].> 9 : "直接触发任务启动"
+6 .[#707070].> 7 : "触发流程启动"
 @enduml
