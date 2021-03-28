@@ -41,8 +41,8 @@ package "docker-worker\n[Container]" {
   rectangle "==daemon\n<size:10>[Component]</size>\n\nworker守护容器" <<13>> as 13
   rectangle "==代码编译\n<size:10>[Component]</size>\n\n任务运行容器" <<14>> as 14
 }
-13 .[#707070].> 15 : "启动容器"
-13 .[#707070].> 4 : "返回执行结果"
-13 .[#707070].> 14 : "启动容器"
-4 .[#707070].> 13 : "下发任务执行"
+13 .[#707070].> 15 : "启动容器\n<size:8>[Docker API]</size>"
+13 .[#707070].> 4 : "返回执行结果\n<size:8>[grpc]</size>"
+13 .[#707070].> 14 : "启动容器\n<size:8>[Docker API]</size>"
+4 .[#707070].> 13 : "下发任务执行\n<size:8>[grpc]</size>"
 @enduml

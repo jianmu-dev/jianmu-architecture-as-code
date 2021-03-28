@@ -94,8 +94,8 @@ node "Docker Container - Worker Server\n[Deployment Node: Docker]" <<57>> as 57 
 node "Web Browser\n[Deployment Node: Chrome, Firefox, Safari, or Edge]" <<47>> as 47 {
   rectangle "==SPA单页面应用\n<size:10>[Container: TypeScript and Vue 3.0]</size>\n\nProvides all of the Jianmu functionality to customers via their web browser." <<48>> as 48
 }
-48 .[#707070].> 51 : "启动流程或任务"
-59 .[#707070].> 51 : "返回执行结果"
-51 .[#707070].> 59 : "下发任务执行"
+48 .[#707070].> 51 : "启动流程或任务\n<size:8>[Rest API]</size>"
+59 .[#707070].> 51 : "返回执行结果\n<size:8>[grpc]</size>"
+51 .[#707070].> 59 : "下发任务执行\n<size:8>[grpc]</size>"
 51 .[#707070].> 55 : "读写数据\n<size:8>[JDBC/SSL]</size>"
 @enduml

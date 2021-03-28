@@ -23,32 +23,32 @@ workspace "Jianmu" "建木自动化集成平台" {
             }
         }
         # 容器之间关联关系
-        user -> singlePageApplication "操作或查看流程与任务"
+        user -> singlePageApplication "操作或查看流程与任务" "Rest API"
         web -> database "读写数据" "JDBC/SSL"
-        web -> daemon "下发任务执行"
-        web -> daemon_process "下发任务执行"
-        daemon -> web "返回执行结果"
-        daemon_process -> web "返回执行结果"
+        web -> daemon "下发任务执行" "grpc"
+        web -> daemon_process "下发任务执行" "grpc"
+        daemon -> web "返回执行结果" "grpc"
+        daemon_process -> web "返回执行结果" "grpc"
 
         # worker内部组件关系
-        daemon -> runner1 "启动容器"
-        daemon -> runner2 "启动容器"
+        daemon -> runner1 "启动容器" "Docker API"
+        daemon -> runner2 "启动容器" "Docker API"
 
         # 主服务内部组件关系
-        singlePageApplication -> trigger "启动流程或任务"
-        singlePageApplication -> dsl "提交DSL定义"
-        dsl -> workflow "保存流程定义"
-        trigger -> workflow "触发流程启动"
-        trigger -> task "直接触发任务启动"
-        workflow -> task "任务节点激活事件触发任务启动"
-        workflow -> task "任务节点中止事件触发任务中止"
-        workflow -> el "执行表达式"
-        el -> workflow "返回表达式结果"
-        task -> workflow "返回任务执行状态"
-        workflow -> parameter "读取参数信息"
-        workflow -> parameter "流程执行结果参数写入"
-        task -> parameter "读取参数信息"
-        task -> parameter "任务执行结果参数写入"
+        singlePageApplication -> trigger "启动流程或任务" "Rest API"
+        singlePageApplication -> dsl "提交DSL定义" "Rest API"
+        dsl -> workflow "保存流程定义" "Java API"
+        trigger -> workflow "触发流程启动" "Java API"
+        trigger -> task "直接触发任务启动" "Java API"
+        workflow -> task "任务节点激活事件触发任务启动" "Java API"
+        workflow -> task "任务节点中止事件触发任务中止" "Java API"
+        workflow -> el "执行表达式" "Java API"
+        el -> workflow "返回表达式结果" "Java API"
+        task -> workflow "返回任务执行状态" "Java API"
+        workflow -> parameter "读取参数信息" "Java API"
+        workflow -> parameter "流程执行结果参数写入" "Java API"
+        task -> parameter "读取参数信息" "Java API"
+        task -> parameter "任务执行结果参数写入" "Java API"
 
         deploymentEnvironment "dev" {
             deploymentNode "Web Browser" "" "Chrome, Firefox, Safari, or Edge" {

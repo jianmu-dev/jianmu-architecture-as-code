@@ -17,16 +17,16 @@ skinparam rectangle<<11>> {
   BorderColor #2E6295
   roundCorner 20
 }
+skinparam rectangle<<1>> {
+  BackgroundColor #08427b
+  FontColor #ffffff
+  BorderColor #052E56
+}
 skinparam rectangle<<12>> {
   BackgroundColor #438dd5
   FontColor #ffffff
   BorderColor #2E6295
   roundCorner 20
-}
-skinparam rectangle<<1>> {
-  BackgroundColor #08427b
-  FontColor #ffffff
-  BorderColor #052E56
 }
 skinparam rectangle<<3>> {
   BackgroundColor #438dd5
@@ -54,11 +54,11 @@ package "建木自动化集成平台\n[Software System]" {
   rectangle "==主服务\n<size:10>[Container]</size>\n\n主服务" <<4>> as 4
   rectangle "==数据库\n<size:10>[Container]</size>\n\nMysql 8.0" <<11>> as 11
 }
-3 .[#707070].> 4 : "启动流程或任务"
-12 .[#707070].> 4 : "返回执行结果"
-16 .[#707070].> 4 : "返回执行结果"
-4 .[#707070].> 12 : "下发任务执行"
-4 .[#707070].> 16 : "下发任务执行"
+3 .[#707070].> 4 : "启动流程或任务\n<size:8>[Rest API]</size>"
+12 .[#707070].> 4 : "返回执行结果\n<size:8>[grpc]</size>"
+16 .[#707070].> 4 : "返回执行结果\n<size:8>[grpc]</size>"
+4 .[#707070].> 12 : "下发任务执行\n<size:8>[grpc]</size>"
+4 .[#707070].> 16 : "下发任务执行\n<size:8>[grpc]</size>"
 4 .[#707070].> 11 : "读写数据\n<size:8>[JDBC/SSL]</size>"
-1 .[#707070].> 3 : "操作或查看流程与任务"
+1 .[#707070].> 3 : "操作或查看流程与任务\n<size:8>[Rest API]</size>"
 @enduml
